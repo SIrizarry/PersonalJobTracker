@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
-const {app} = window.require('electron').remote;
+
+import Home from './components/home';
+import List from './components/list';
+
+// const {app} = window.require('electron').remote;
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>React + Electron = <span role="img" aria-label="love">😍</span></h2>
-        </div>
-        <p className="App-intro">
-          <b> Release 0.2.7 </b>
-          Version: {app.getVersion()}
-        </p>
+    const App = () => (
+      <div>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/list' component={List}/>
+        </Switch>
       </div>
+    )
+    return (
+      <Switch>
+        <App/>
+      </Switch>
     );
   }
 }
