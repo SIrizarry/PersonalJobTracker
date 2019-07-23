@@ -5,8 +5,9 @@ const logger = require('winston');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const list = require('./routes/list');
 
-const index = require(path.join(__dirname, 'routes', 'index'));
+// const index = require(path.join(__dirname, 'routes', 'index'));
 // const users = require(path.join(__dirname, 'routes', 'users'));
 
 //ton of middleware
@@ -18,11 +19,7 @@ app.use(cookieParser());
 app.use('/public', express.static(__dirname + '../public'));
 
 //Routing
-app.get('/api/getList', (req, res) => {
-  var list = ["item1", "item2", "item3"];
-  res.json(list);
-  console.log('Sent list of items');
-})
+app.get('/list', list.list); //Example of an imported api route
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + '../public/index.html'));

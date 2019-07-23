@@ -14,9 +14,14 @@
     "electron-is-dev": "0.3.0",
     "electron-log": "^2.2.6",
     "express": "^4.17.1",
+    "leveldown": "^5.1.1",
+    "mongoose": "^5.6.5",
+    "pouchdb-adapter-leveldb": "^7.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
+    "rxdb": "^8.2.1",
+    "rxjs": "^6.5.2",
     "serve-favicon": "^2.5.0",
     "update-electron-app": "^1.2.0",
     "winston": "^3.2.1",
@@ -45,6 +50,6 @@
     "electron-build": "electron-builder",
     "release": "yarn react-build && electron-builder --publish=always",
     "build": "yarn react-build && yarn electron-build",
-    "start": "concurrently \"node ./server/bin/www\" \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+    "start": "concurrently \"node --inspect ./server/bin/www\" \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
   }
 }
