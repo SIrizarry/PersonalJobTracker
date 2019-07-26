@@ -1,33 +1,47 @@
+//Express
 const express = require('express')
 const app = express()
+
 const path = require('path');
 const logger = require('winston');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const list = require('./routes/list');
+let mongoose = require('mongoose');
+const uri = process.env.MLAB_URI;
 
-// const index = require(path.join(__dirname, 'routes', 'index'));
-// const users = require(path.join(__dirname, 'routes', 'users'));
+const routes = require('./routes/index');
 
 //ton of middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use('/public', express.static(__dirname + '../public'));
 
-//Routing
-app.get('/list', list.list); //Example of an imported api route
+//Connect to mongo server
+mongoose.connect(uri, {useNewUrlParser: true}, function(){
+  console.log('database connected');
+})
 
+//Routing
+app.get('/api/getJobs', routes.getJobs);
+
+app.post('/api/addJob', routes.addJob);
+
+app.get('/api/getCompanies', routes.getCompanies);
+
+app.post('/api/addCompany', routes.addCompany);
+
+//Any request that does not match an existing one is sent here
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + '../public/index.html'));
 });
 
 //catch 404
 app.use(function(req, res, next){
-  const err = new Error('Not Found');
+  const err = new Error('Not Found'); 
   err.status = 404;
   next(err);
 });

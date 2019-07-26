@@ -1,0 +1,38 @@
+.jobs-list-wrapper{
+  padding:5%;
+}
+
+.job-container{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:75px;
+  margin-bottom: 10px;
+}
+
+.logo-container{
+  flex-basis:10%;
+  background-color:lightgreen;
+  height:100%;
+  display:inline-block;
+}
+.desc-container{
+  flex-basis: 64%;
+  background-color:lightpink;
+  overflow-y: scroll;
+  padding:1%;
+  font-size:12px;
+}
+.details-container{
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+  font-size:12px;
+  flex-basis:19%;
+  padding:1%;
+  background-color:lightgoldenrodyellow
+}
+.details-container p {
+  margin-bottom:2px;
+  margin-top:0;
+}

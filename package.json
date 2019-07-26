@@ -1,10 +1,14 @@
 {
-  "name": "cra-electron",
-  "description": "CRA + Electron sitting in a tree",
-  "author": "Kitze",
+  "name": "cra-electron-express-react-mongodb",
+  "description": "All in one Electron Starter",
+  "author": "Saliel",
   "version": "0.2.7",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@material-ui/core": "^4.2.1",
     "axios": "^0.19.0",
     "body-parser": "~1.18.3",
     "cookie-parser": "^1.4.4",

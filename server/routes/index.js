@@ -3,40 +3,53 @@ log.transports.console.level = 'info';
 log.transports.file.level = 'info';
 
 const express = require('express');
-const router = express.Router();
-
 const mongoose = require('mongoose');
-const uri = process.env.MLAB_URI;
-console.log(uri);
-const db = mongoose.createConnection(uri, {useNewUrlParser: true});
-const Schema = mongoose.Schema;
+const models = require('../schema/schema');
+const Job = models.Job;
+const Company = models.Company;
 
-const testSchema = new Schema({
-  name: String,
-  age: Number
-});
+exports.getJobs = function( req, res ) {
+  Job.find({})
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).send('Could not retrieve Job list');
+    })
+};
 
-const Test = db.model('test', testSchema);
+exports.addJob = function( req, res ) {
+  const saveObject = new Job(req.query);
+  saveObject.save()
+    .then(item => {
+      res.send("Job saved to database");
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).send("Unable to save Job to database");
+    })
+};
 
-const test = new Test({ name: 'Billy', age: 31 })
+exports.getCompanies = function( req, res ) {
+  Company.find({})
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).send('Could not retrive Company list');
+    })
+};
 
-db.once('connected', function (err){
-  if(err) { return console.error(err) }
-  Test.create(test, function (err, doc){
-    if(err) { return console.error(err) }
-    console.log(doc)
-    return db.close();
-  })
-});
-
-// mongoose.connect('mongodb://admin:administrator123@ds253537.mlab.com:53537/fun4thedisabled', {useNewURLParser: true}, function(){
-//   console.log('mongoose connected');
-// })
-
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//     log.info('Sending 200....');
-//     res.send("200", "Success");
-// });
-
-module.exports = router;
+exports.addCompany = function( req, res ) {
+  const saveObject = new Company(req.query);
+  saveObject.save()
+    .then(item => {
+      res.send("Company saved to database");
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).send("Unable to save company to database");
+    })
+};

@@ -4,8 +4,6 @@ import './App.css';
 
 
 import Home from './components/home';
-import List from './components/list';
-
 // const {app} = window.require('electron').remote;
 
 class App extends Component {
@@ -14,7 +12,6 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route path='/list' component={List}/>
         </Switch>
       </div>
     )
