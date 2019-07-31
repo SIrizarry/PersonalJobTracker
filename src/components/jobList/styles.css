@@ -1,5 +1,8 @@
 .jobs-list-wrapper{
-  padding:5%;
+  padding:2%;
+}
+.makeStyles-root-112 {
+  margin-top:0 !important;
 }
 
 .job-container{
@@ -22,6 +25,7 @@
   overflow-y: scroll;
   padding:1%;
   font-size:12px;
+  white-space:pre-wrap;
 }
 .details-container{
   display:flex;

@@ -7,16 +7,21 @@ const logger = require('winston');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const uri = process.env.MLAB_URI;
 
 const routes = require('./routes/index');
 
 //ton of middleware
 app.use(cors());
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(function(req, res, next) { 
+  res.header("Access-Control-Allow-Origin", "*"); 
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
+  next()
+});
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use('/public', express.static(__dirname + '../public'));
 

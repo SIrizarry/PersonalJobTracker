@@ -20,7 +20,7 @@ exports.getJobs = function( req, res ) {
 };
 
 exports.addJob = function( req, res ) {
-  const saveObject = new Job(req.query);
+  const saveObject = new Job(req.body);
   saveObject.save()
     .then(item => {
       res.send("Job saved to database");
@@ -43,7 +43,7 @@ exports.getCompanies = function( req, res ) {
 };
 
 exports.addCompany = function( req, res ) {
-  const saveObject = new Company(req.query);
+  const saveObject = new Company(req.body);
   saveObject.save()
     .then(item => {
       res.send("Company saved to database");

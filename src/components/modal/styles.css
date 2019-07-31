@@ -1,3 +1,6 @@
 .modal-component-container {
   display:inline-block;
 }
+#description{
+  white-space: pre-wrap;
+}
