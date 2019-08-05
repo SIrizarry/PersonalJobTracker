@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const uri = process.env.MLAB_URI;
+const uri = process.env.DB_URI;
 
 const routes = require('./routes/index');
 
