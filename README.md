@@ -1,4 +1,4 @@
-# Project Title
+# Personal Job Tracker
 
 I need a job but I also find it hard to keep track of which step I am for which company in the hiring process so I made this app to help keep track of that. If you like the app and think someone like me could be of use to your operation, please send me an email. 
 
