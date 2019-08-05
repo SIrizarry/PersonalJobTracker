@@ -4,11 +4,11 @@ I need a job but I also find it hard to keep track of which step I am for which 
 
 ## Getting Started
 
-```yarn install``` will download all necesarry files for you
-You'll want to create your own remote MongoDB
-Place that a .env file which DB_URI as the key
-```yarn start``` will start the Electron app and the React app at the same time.  
-I'm also including my .vscode launch config as I found it helpful. You don't need ```yarn start``` if you're using that.
+* ```yarn install``` will download all necesarry files for you
+* You'll want to create your own remote MongoDB
+* Place that a .env file which DB_URI as the key
+* ```yarn start``` will start the Electron app and the React app at the same time.  
+* I'm also including my .vscode launch config as I found it helpful. You don't need ```yarn start``` if you're using that.
 
 
 ## Deployment
